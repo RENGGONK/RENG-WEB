@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,11 +77,13 @@
 
     #frogBtn img {
       width: 60px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #0f0;
       transition: transform 0.3s;
     }
 
     #frogBtn:hover img {
-      transform: scale(1.1) rotate(10deg);
+      transform: scale(1.1) rotate(8deg);
     }
 
     #chatWindow {
@@ -167,14 +170,13 @@
     </p>
     <p class="meme-slogan">“The more nonsense, the more gains.” 💸😂</p>
 
-    <!-- dalam bagian .links -->
-<div class="links">
-  <a class="button" href="https://t.me/comunityRENGGONK" target="_blank">Telegram 🐸</a>
-  <a class="button" href="https://x.com/ICN_COIN?t=0-AS5SU2ls7vqZte35Pdqw&s=08" target="_blank">Twitter (X) 🐤</a>
-  <a class="button" href="https://discord.gg/j2XTx7me" target="_blank">Discord 🎮</a>
-  <a class="button" href="https://renggonk.github.io/WHITEPAPER/" target="_blank">Read Whitepaper 📄</a>
-  <a class="button" href="#buy-token" onclick="alert('Buy button coming soon, stay tuned! 🤑')">Buy $RENG 💰</a>
-</div>
+    <div class="links">
+      <a class="button" href="https://t.me/comunityRENGGONK" target="_blank">Telegram 🐸</a>
+      <a class="button" href="https://x.com/ICN_COIN?t=0-AS5SU2ls7vqZte35Pdqw&s=08" target="_blank">Twitter (X) 🐤</a>
+      <a class="button" href="https://discord.gg/j2XTx7me" target="_blank">Discord 🎮</a>
+      <a class="button" href="https://renggonk.github.io/WHITEPAPER/" target="_blank">Read Whitepaper 📄</a>
+      <a class="button" href="#buy-token" onclick="alert('Buy button coming soon, stay tuned! 🤑')">Buy $RENG 💰</a>
+    </div>
 
     <div class="footer">
       <p>Built by the people, for the memes. Powered by the frog spirit. 🐸</p>
@@ -183,7 +185,7 @@
 
   <!-- 🐸 Floating Chatbot Button -->
   <button id="frogBtn">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Pepe_the_Frog_Icon.png/240px-Pepe_the_Frog_Icon.png" alt="Chat with RENGGONK" />
+    <img src="https://renggonk.github.io/assets/renggonk-head.png" alt="Chat with RENGGONK" />
   </button>
 
   <!-- 🐸 Chat Window -->
@@ -196,7 +198,6 @@
     </div>
   </div>
 
-  <!-- 🧠 Script -->
   <script>
     const frogBtn = document.getElementById("frogBtn");
     const chatWindow = document.getElementById("chatWindow");
@@ -241,7 +242,6 @@
       messages.scrollTop = messages.scrollHeight;
     }
 
-    // Auto-hide chat on load
     window.onload = () => {
       chatWindow.style.display = "none";
     };
