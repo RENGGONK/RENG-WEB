@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +15,7 @@
       text-align: center;
       padding: 20px;
     }
+
     .container {
       background-color: rgba(0, 0, 0, 0.7);
       border-radius: 20px;
@@ -24,15 +24,18 @@
       margin: auto;
       box-shadow: 0 0 25px #0f0;
     }
+
     h1 {
       font-size: 3em;
       color: #0f0;
       text-shadow: 2px 2px 0 #000;
     }
+
     p {
       font-size: 1.4em;
       color: #f9f9f9;
     }
+
     .button {
       display: inline-block;
       padding: 15px 25px;
@@ -46,17 +49,21 @@
       text-decoration: none;
       transition: 0.3s;
     }
+
     .button:hover {
       background-color: #00cc77;
     }
+
     .links {
       margin-top: 20px;
     }
+
     .footer {
       margin-top: 40px;
       font-size: 1em;
       color: #aaa;
     }
+
     .meme-slogan {
       font-size: 2em;
       margin-top: 20px;
@@ -156,6 +163,47 @@
     #chatInput button:hover {
       background: #45a049;
     }
+
+    /* 🎵 Music button style */
+    #musicButton {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      font-size: 28px;
+      padding: 10px 15px;
+      background: #00ff99;
+      color: #000;
+      border-radius: 50%;
+      box-shadow: 0 0 15px #00ff99;
+      cursor: pointer;
+      z-index: 999;
+      transition: all 0.3s ease;
+    }
+
+    #musicButton:hover {
+      transform: scale(1.1) rotate(10deg);
+      box-shadow: 0 0 25px #0f0;
+    }
+
+    /* 🎧 Music Notification */
+    #musicNotice {
+      position: fixed;
+      bottom: 80px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.85);
+      color: #00ff99;
+      padding: 10px 15px;
+      border-radius: 10px;
+      font-size: 14px;
+      z-index: 999;
+      animation: fadeOut 5s forwards;
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { opacity: 0; display: none; }
+    }
   </style>
 </head>
 <body>
@@ -183,11 +231,17 @@
     </div>
   </div>
 
-  <!-- 🎵 Background Music Player -->
-  <audio id="bg-music" autoplay loop controls style="position: fixed; bottom: 20px; left: 20px; z-index: 999; width: 250px;">
+  <!-- 🎵 Background Music -->
+  <audio id="bgMusic" autoplay loop>
     <source src="reng-music.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
+
+  <!-- 🎵 Custom Music Button -->
+  <div id="musicButton" onclick="toggleMusic()" title="Click to mute/unmute music">🎵</div>
+
+  <!-- 🎧 Music Notice -->
+  <div id="musicNotice">🎧 Music is playing... Chillin' with RENG 🐸</div>
 
   <!-- 🐸 Floating Chatbot Button -->
   <button id="frogBtn">
@@ -205,6 +259,7 @@
   </div>
 
   <script>
+    // Chatbot script
     const frogBtn = document.getElementById("frogBtn");
     const chatWindow = document.getElementById("chatWindow");
     const messages = document.getElementById("messages");
@@ -217,10 +272,8 @@
     async function sendMessage() {
       const text = userInput.value.trim();
       if (!text) return;
-
       appendMessage("You", text, "user");
       userInput.value = "";
-
       appendMessage("RENGGONK", "Typing...", "bot");
 
       try {
@@ -233,7 +286,6 @@
         const data = await res.json();
         const lastBot = messages.querySelector(".bot:last-child");
         if (lastBot) lastBot.innerText = `RENGGONK: ${data.reply}`;
-
       } catch (err) {
         const lastBot = messages.querySelector(".bot:last-child");
         if (lastBot) lastBot.innerText = `RENGGONK: Error 🐸💥 Try again later.`;
@@ -251,6 +303,22 @@
     window.onload = () => {
       chatWindow.style.display = "none";
     };
+
+    // 🎵 Music toggle logic
+    function toggleMusic() {
+      const music = document.getElementById("bgMusic");
+      const icon = document.getElementById("musicButton");
+
+      if (music.paused) {
+        music.play();
+        icon.style.background = "#00ff99";
+        icon.innerText = "🎵";
+      } else {
+        music.pause();
+        icon.style.background = "#888";
+        icon.innerText = "🔇";
+      }
+    }
   </script>
 </body>
 </html>
