@@ -283,7 +283,7 @@
       appendMessage("RENGGONK", "Typing...", "bot");
 
       try {
-        const res = await fetch("https://bot-web-production.up.railway.app/api/chat", {
+        const res = await fetch('https://bot-web-production.up.railway.app/api/chat', {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ message: text }),
