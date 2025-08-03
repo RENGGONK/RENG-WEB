@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -211,7 +212,7 @@
     <img src="renggonk-bg.jpeg" alt="Renggonk Frog" width="150">
     <h1>RENGGONK MEME TOKEN</h1>
     <p>
-      Welcome to <strong>RENGGONK</strong>! 🐸 The meme token for those who are not only here to moon but also to learn, laugh, and build a strong froggo fam in crypto. 
+      Welcome to <strong>RENGGONK</strong>! 🐸 The meme token for those who are not only here to moon but also to learn, laugh, and build a strong froggo fam in crypto.
     </p>
     <p>
       This isn’t just any meme token – it’s a <strong>community-powered</strong>, <strong>edu-meme-tional</strong> revolution 🧠🚀. We share alpha, laugh at rugs, and vote like kings. Your opinion matters here!
@@ -259,14 +260,19 @@
   </div>
 
   <script>
-    // Chatbot script
+    // Chatbot Script
     const frogBtn = document.getElementById("frogBtn");
     const chatWindow = document.getElementById("chatWindow");
     const messages = document.getElementById("messages");
     const userInput = document.getElementById("userInput");
 
     frogBtn.addEventListener("click", () => {
-      chatWindow.style.display = chatWindow.style.display === "none" ? "flex" : "none";
+      if (chatWindow.style.display === "none" || chatWindow.style.display === "") {
+        chatWindow.style.display = "flex";
+        chatWindow.style.flexDirection = "column";
+      } else {
+        chatWindow.style.display = "none";
+      }
     });
 
     async function sendMessage() {
@@ -300,25 +306,27 @@
       messages.scrollTop = messages.scrollHeight;
     }
 
-    window.onload = () => {
-      chatWindow.style.display = "none";
-    };
-
-    // 🎵 Music toggle logic
+    // 🎵 Music Toggle Logic with Icon Change
     function toggleMusic() {
       const music = document.getElementById("bgMusic");
       const icon = document.getElementById("musicButton");
 
       if (music.paused) {
         music.play();
+        icon.innerHTML = "🎵";
         icon.style.background = "#00ff99";
-        icon.innerText = "🎵";
+        icon.style.boxShadow = "0 0 15px #00ff99";
       } else {
         music.pause();
+        icon.innerHTML = "🔇";
         icon.style.background = "#888";
-        icon.innerText = "🔇";
+        icon.style.boxShadow = "0 0 10px #888";
       }
     }
+
+    window.onload = () => {
+      chatWindow.style.display = "none";
+    };
   </script>
 </body>
 </html>
