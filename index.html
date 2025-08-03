@@ -274,7 +274,8 @@
         chatWindow.style.display = "none";
       }
     });
-async function sendMessage() {
+
+    async function sendMessage() {
   const text = userInput.value.trim();
   if (!text) return;
   appendMessage("You", text, "user");
