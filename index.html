@@ -283,11 +283,11 @@
   appendMessage("RENGGONK", "Typing...", "bot");
 
   try {
-    const res = await fetch("bot-web-production.up.railway.app", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: text }),
-    });
+    const res = await fetch("https://bot-web-production.up.railway.app/", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ message: text }),
+});
 
     const data = await res.json();
     const lastBot = messages.querySelector(".bot:last-child");
